@@ -1,3 +1,4 @@
 /.quarto/
 .Rproj.user
-echo "data/mp01/nyc_payroll_export.csv" >> .gitignore
+data/
+data/nyc_payroll.csv

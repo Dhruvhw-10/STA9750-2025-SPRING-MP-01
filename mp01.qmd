@@ -23,11 +23,13 @@ This report analyzes **NYC Payroll Data**, examining financial trends and evalua
 ✅ Compare results with external reports.\
 ✅ Assess the feasibility of **three policy proposals** to reduce payroll costs.
 
-# **📊 2. Data Acquisition & Preparation**
+# **📊 Data Acquisition & Preparation**
 
-## **2.1 Load and Clean Data**
+## \*\* Load and Clean Data\*\*
 
 ```{r}
+#| message: false
+#| warning: false
 library(readr)
 library(dplyr)
 library(stringr)
@@ -67,9 +69,9 @@ payroll_data <- payroll_data %>%
 glimpse(payroll_data)
 ```
 
-# 🏛️ 3. Mayor Payroll Analysis
+# 🏛️ Mayor Payroll Analysis
 
-## 3.1 Mayor Eric Adams' Salary
+## Mayor Eric Adams' Salary
 
 ```{r}
 mayor_data <- payroll_data %>%
@@ -85,7 +87,7 @@ mayor_data %>%
   ))
 ```
 
-## **💰 3.2 Total Compensation Calculation**
+## **💰 Total Compensation Calculation**
 
 To calculate **total compensation**, we consider different pay structures:
 
@@ -114,11 +116,11 @@ datatable(
 )
 ```
 
-# **📊 4. Key Payroll Insights**
+# **📊 Key Payroll Insights**
 
 This section answers critical payroll-related questions using **NYC Payroll Data**.
 
-## **4.1 Highest Base Salary Job Title**
+## \*\* Highest Base Salary Job Title\*\*
 
 ```{r}
 highest_paid_job <- payroll_data %>%
@@ -133,7 +135,7 @@ print(highest_paid_job)
 
 📌 **Insight:** Employees in executive positions tend to have the highest base salaries. External reports confirm that high salaries are a budget concern.
 
-## **4.2 Highest Earning Employee**
+## \*\* Highest Earning Employee\*\*
 
 The highest-earning employee based on total compensation.
 
@@ -149,7 +151,7 @@ print(highest_earning_employee)
 
 📌 **Insight:** Some employees earn significantly more than their base salary due to overtime and other pay.
 
-## **4.3 Most Overtime Hours Worked**
+## \*\* Most Overtime Hours Worked\*\*
 
 Identifies the employee who has worked the most overtime hours.
 
@@ -162,7 +164,7 @@ most_overtime_employee <- payroll_data %>%
 print(most_overtime_employee)
 ```
 
-## **4.4 Agency with Highest Average Payroll**
+## \*\* Agency with Highest Average Payroll\*\*
 
 The agency with the highest **average** payroll per employee.
 
@@ -178,7 +180,7 @@ print(highest_avg_payroll_agency)
 
 📌 **Insight:** Some specialized agencies pay significantly more than others due to expertise requirements.
 
-## **4.5 Agency with Most Employees Per Year**
+## \*\* Agency with Most Employees Per Year\*\*
 
 The agency employing the most people in a given year.
 
@@ -194,7 +196,7 @@ print(most_employees_agency)
 
 📌 **Insight:** The NYPD and Department of Education tend to have the largest workforces.
 
-## **4.6 Agency with Highest Overtime Usage**
+## \*\* Agency with Highest Overtime Usage\*\*
 
 The agency with the highest overtime usage relative to regular hours.
 
@@ -214,7 +216,7 @@ print(highest_overtime_agency)
 
 📌 **Insight:** Some agencies rely heavily on overtime rather than hiring more employees.
 
-## **4.7 Average Salary of Employees Outside NYC**
+## \*\* Average Salary of Employees Outside NYC\*\*
 
 The average salary of employees working outside the five boroughs.
 
@@ -228,7 +230,7 @@ print(outside_five_boroughs_salary)
 
 📌 **Insight:** Employees working outside NYC may have different pay structures.
 
-## **4.8 NYC Payroll Growth Over 10 Years**
+## \*\* NYC Payroll Growth Over 10 Years\*\*
 
 Tracking total payroll growth.
 
@@ -252,7 +254,7 @@ ggplot(payroll_growth, aes(x = fiscal_year, y = total_payroll)) +
 
 📌 **Insight:** NYC’s payroll costs have steadily increased over the last decade.
 
-# **📢 4. Policy Recommendations**
+# **📢 Policy Recommendations**
 
 ## **Policy 1: Cap High Salaries**
 
@@ -285,7 +287,7 @@ datatable(
 
 Excessive overtime costs **1.5x regular wages**. Instead, hiring more employees can reduce payroll expenses.
 
-###  **4.2.1. Overtime Reduction Analysis**
+### \*\* Overtime Reduction Analysis\*\*
 
 Objective: Identify how many full-time employees (FTEs) would be needed to replace current overtime hours.
 
@@ -303,7 +305,7 @@ datatable(overtime_reduction, options = list(scrollX = TRUE))
 
 📌 **Insight:** Agencies with high overtime hours may benefit from hiring additional staff instead of relying on overtime.
 
-###  **4.2.2. Overtime Cost vs. Regular Cost Savings**
+### \*\* Overtime Cost vs. Regular Cost Savings\*\*
 
 **Objective:** Calculate the cost difference between overtime pay and regular pay.
 
@@ -322,7 +324,7 @@ datatable(overtime_savings, options = list(scrollX = TRUE))
 
 📌 **Insight:** Agencies paying excessive overtime could save significantly by hiring regular staff instead.
 
-###  **4.2.3. Agency-Level Savings Calculation**
+### \*\* Agency-Level Savings Calculation\*\*
 
 **Objective:** Aggregate savings at the agency level to determine the most cost-effective changes.
 
@@ -356,7 +358,7 @@ The analysis consists of three parts:
 2️⃣ **Assessing Remote Work Eligibility**\
 3️⃣ **Estimating New Hires Needed to Replace Overtime Hours**
 
-### **4.3.1. Identifying Non-Essential Overtime & Potential Savings**
+### \*\* Identifying Non-Essential Overtime & Potential Savings\*\*
 
 **Objective:** Reduce overtime in administrative and support roles where excess hours are unnecessary.
 
@@ -376,7 +378,7 @@ datatable(non_essential_overtime, options = list(scrollX = TRUE))
 📌 **Insight:**\
 Administrative and clerical jobs could **cut overtime costs by half**, saving **millions in payroll expenses**.
 
-### **4.3.2. Remote Work Eligibility**
+### \*\* Remote Work Eligibility\*\*
 
 **Objective:** Determine how many employees work in **remote-eligible** job titles.
 
@@ -391,7 +393,7 @@ datatable(remote_eligible, options = list(scrollX = TRUE))
 📌 **Insight:**\
 Encouraging **remote work** for data-heavy and administrative roles **reduces office space costs** and **lowers commute-driven overtime claims**.
 
-### **4.3.3. Hiring New Employees to Replace Overtime Dependency**
+### \*\* Hiring New Employees to Replace Overtime Dependency\*\*
 
 **Objective:** Identify how many full-time employees would be needed to **replace existing overtime hours**.
 
@@ -410,7 +412,7 @@ Instead of paying costly overtime, **hiring additional full-time employees** wou
 ✔ **Expand remote work** for IT, Analysts, and Project Managers to reduce office space and commute-driven overtime.\
 ✔ **Hire full-time employees** to replace reliance on overtime in high-workload agencies.
 
-# **🎯 5. Conclusion & Final Recommendations**
+# **🎯 Conclusion & Final Recommendations**
 
 ✅ **Implement Policy III** *(Remote Work & Overtime Reduction)*\
 ✅ **Gradually phase in Policy II** *(New Hires to Reduce Overtime)*\
@@ -418,7 +420,7 @@ Instead of paying costly overtime, **hiring additional full-time employees** wou
 
 📌 **This report provides actionable strategies** to reduce NYC payroll expenditures while maintaining efficiency.
 
-# **📖 6. References & Citations**
+# **📖 References & Citations**
 
 -   **Citizens Budget Commission (CBC)**: [cbcny.org](https://cbcny.org)
 
